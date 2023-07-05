@@ -21,6 +21,9 @@ nlp = spacy.load('es_core_news_sm')
 from PIL import Image
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
+from pysentimiento import create_analyzer
+analyzer = create_analyzer(task="sentiment", lang="es")
+
 def tele13(x,t='wea'):
     url=x
     page=urlopen(url)
@@ -299,7 +302,18 @@ def leman(x,y):
         x[i]= [tok.lemma_.lower() for tok in doc if tok.pos_ != 'PRON']
     return x
 
+def Scorepysentimiento(x):
+    n1=x.shape[1]
+    n2=x.shape[0]
+    for i in range(0,n1):
+        print(" ","\n")
+        print(x.columns[i],"\n")
+        print(" ","\n")
+        for j in range(0,n2):
+            print(x.iloc[j,i])
+            print(analyzer.predict(x.iloc[j,i]))
 
+    return
 
 
 def TopWords(x,n=20):

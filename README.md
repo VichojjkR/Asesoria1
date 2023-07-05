@@ -12,3 +12,5 @@ Ademas de la instalacion de los siguientes paquetes
 -urllib
 -bs4
 -re
+-pysentimiento
+-sklearn
